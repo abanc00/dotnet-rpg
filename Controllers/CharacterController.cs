@@ -1,6 +1,7 @@
 using dotnet_rpg.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace dotnet_rpg.Controllers
 {
@@ -10,7 +11,7 @@ namespace dotnet_rpg.Controllers
     {
         private static List<Character> characters = new List<Character> {
             new Character(),
-            new Character {Name = "Sam"}
+            new Character {Id = 1, Name = "Sam"}
         };
 
         [HttpGet("GetAll")]
@@ -19,9 +20,9 @@ namespace dotnet_rpg.Controllers
             return Ok(characters);
         }
 
-        public IActionResult GetSingle()
+        public IActionResult GetSingle(int id)
         {
-            return Ok(characters[0]);
+            return Ok(characters.FirstOrDefault(c => c.Id == id));
         }
     }
 }
