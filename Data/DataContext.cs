@@ -17,6 +17,11 @@ namespace dotnet_rpg.Data
         {
             modelBuilder.Entity<CharacterSkill>().HasKey(cs => new { cs.CharacterId, cs.SkillId });
             modelBuilder.Entity<User>().Property(user => user.Role).HasDefaultValue("Player");
+            modelBuilder.Entity<Skill>().HasData(
+                new Skill { Id = 1, Name = "Fireball", Damage = 30},
+                new Skill { Id = 2, Name = "Frenzy", Damage = 20},
+                new Skill { Id = 3, Name = "Blizzard", Damage = 50}
+            );
         }
     }
 }
